@@ -1,13 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
-  SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
+import {
+  SwiperComponent, SwiperDirective, SwiperConfigInterface,
+  SwiperScrollbarInterface, SwiperPaginationInterface
+} from 'ngx-swiper-wrapper';
 
 @Component({
   selector: 'my-app',
   moduleId: 'src/app/app.component',
   templateUrl: 'app.component.html',
-  styleUrls: [ 'app.component.css' ]
+  styleUrls: ['app.component.css']
 })
 export class AppComponent {
   public show: boolean = true;
@@ -51,7 +53,7 @@ export class AppComponent {
   @ViewChild(SwiperComponent) componentRef?: SwiperComponent;
   @ViewChild(SwiperDirective) directiveRef?: SwiperDirective;
 
-  constructor() {}
+  constructor() { }
 
   public toggleType(): void {
     this.type = (this.type === 'component') ? 'directive' : 'component';

@@ -4,8 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { SwiperModule, SwiperConfigInterface,
-  SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import {
+  SwiperModule, SwiperConfigInterface,
+  SWIPER_CONFIG
+} from 'ngx-swiper-wrapper';
 
 import { AppComponent } from './app.component';
 
@@ -39,4 +41,4 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     }
   ]
 })
-export class AppModule {}
+export class AppModule { }
