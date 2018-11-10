@@ -30,9 +30,65 @@
         <swiper *ngIf="type == 'component' && show" class="swiper-container" fxFlex="auto" [config]="config" [disabled]="disabled"
           (indexChange)="onIndexChange($event)" (swiperTransitionStart)="onSwiperEvent('transitionStart')"
           (swiperTransitionEnd)="onSwiperEvent('transitionEnd')">
-          <div *ngFor="let slide of slides" class="swiper-slide">
+          <!-- <div *ngFor="let slide of slides" class="swiper-slide">
             <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
               {{slide}}
+            </div>
+          </div> -->
+
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../assets/jpg/Birth_of_Venus.jpg" alt="" />
+            </div>
+          </div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../assets/jpg/illustrator1.1.jpg" alt="" />
+            </div>
+          </div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../assets/jpg/illustrator1.6.jpg" alt="" />
+            </div>
+          </div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../assets/jpg/illustrator3.jpg" alt="" />
+            </div>
+          </div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../assets/jpg/illustrator4.4.jpg" alt="" />
+            </div>
+          </div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../assets/jpg/illustrator5.5.jpg" alt="" />
+            </div>
+          </div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../assets/jpg/illustrator6.jpg" alt="" />
+            </div>
+          </div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../assets/jpg/illustrator7.jpg" alt="" />
+            </div>
+          </div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../assets/jpg/illustrator8.jpg" alt="" />
+            </div>
+          </div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../assets/jpg/illustrator9.jpg" alt="" />
+            </div>
+          </div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="../assets/jpg/illustrator10.jpg" alt="" />
             </div>
           </div>
         </swiper>
