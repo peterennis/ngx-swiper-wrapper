@@ -29,6 +29,8 @@ export class SwiperDirective implements AfterViewInit, OnDestroy, DoCheck, OnCha
 
   @Input() disabled: boolean = false;
 
+  @Input() performance: boolean = false;
+
   @Input('swiper') config?: SwiperConfigInterface;
 
   @Output() indexChange = new EventEmitter<number>();
@@ -128,11 +130,9 @@ export class SwiperDirective implements AfterViewInit, OnDestroy, DoCheck, OnCha
 
     params.on = {
       slideChange: () => {
-        this.zone.run(() => {
-          if (this.instance) {
-            this.indexChange.emit(this.instance.realIndex);
-          }
-        });
+        if (this.instance && this.indexChange.observers.length) {
+          this.emit(this.indexChange, this.instance.realIndex);
+        }
       }
     };
 
@@ -140,8 +140,8 @@ export class SwiperDirective implements AfterViewInit, OnDestroy, DoCheck, OnCha
       this.instance = new Swiper(this.elementRef.nativeElement, params);
     });
 
-    if (params.init !== false) {
-      this.S_INIT.emit(this.instance);
+    if (params.init !== false && this.S_INIT.observers.length) {
+      this.emit(this.S_INIT, this.instance);
     }
 
     // Add native Swiper event handling
@@ -159,10 +159,8 @@ export class SwiperDirective implements AfterViewInit, OnDestroy, DoCheck, OnCha
 
         const emitter = this[output as keyof SwiperDirective] as EventEmitter<any>;
 
-        if (emitter.observers.length > 0) {
-          this.zone.run(() => {
-            emitter.emit(args);
-          });
+        if (emitter.observers.length) {
+          this.emit(emitter, args);
         }
       });
     });
@@ -217,6 +215,14 @@ export class SwiperDirective implements AfterViewInit, OnDestroy, DoCheck, OnCha
           });
         }
       }
+    }
+  }
+
+  private emit(emitter: EventEmitter<any>, value: any): void {
+    if (this.performance) {
+      emitter.emit(value);
+    } else {
+      this.zone.run(() => emitter.emit(value));
     }
   }
 

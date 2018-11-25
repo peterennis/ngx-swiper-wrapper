@@ -137,6 +137,7 @@ Swiper directive can be used in correctly structured div element with optional c
 
 [index]                 // Can be used to set the active slide index.
 [disabled]              // Disables changing of slides (locks the Swiper).
+[performance]           // Emit all Swiper events outside the Angular zone.
 
 (indexChange)           // Event handler for the Swiper index change event.
 
