@@ -3,12 +3,13 @@ import { InjectionToken } from '@angular/core';
 export const SWIPER_CONFIG = new InjectionToken<SwiperConfigInterface>('SWIPER_CONFIG');
 
 export type SwiperEvent = 'init' | 'beforeDestroy' | 'scroll' | 'progress' | 'keyPress' |
-  'beforeResize' | 'afterResize' | 'resize' | 'breakpoint' | 'beforeResize' | 'sliderMove' |
+  'resize' | 'breakpoint' | 'zoomChange' | 'beforeResize' | 'afterResize' | 'sliderMove' |
   'slideChange' | 'setTranslate' | 'setTransition' | 'fromEdge' | 'reachEnd' | 'reachBeginning' |
   'autoplay' | 'autoplayStop' | 'autoplayStart' | 'imagesReady' | 'lazyImageLoad' |
-  'lazyImageReady' | 'scrollDragEnd' | 'scrollDragMove' | 'scrollDragStart' | 'swiperTap' |
-  'swiperClick' | 'swiperDoubleTap' | 'swiperTouchEnd' | 'swiperTouchMove' | 'swiperTouchStart' |
-  'swiperTouchMoveOpposite' | 'swiperTransitionEnd' | 'swiperTransitionStart' |
+  'lazyImageReady' | 'scrollDragEnd' | 'scrollDragMove' | 'scrollDragStart' | 'navigationHide' |
+  'navigationShow' | 'paginationRender' | 'paginationUpdate' | 'paginationHide' | 'paginationShow' |
+  'swiperTap' | 'swiperClick' | 'swiperDoubleTap' | 'swiperTouchEnd' | 'swiperTouchMove' |
+  'swiperTouchStart' | 'swiperTouchMoveOpposite' | 'swiperTransitionEnd' | 'swiperTransitionStart' |
   'slideNextTransitionEnd' | 'slideNextTransitionStart' | 'slidePrevTransitionEnd' |
   'slidePrevTransitionStart' | 'slideChangeTransitionEnd' | 'slideChangeTransitionStart';
 
@@ -20,12 +21,11 @@ export const SwiperEvents: SwiperEvent[] = [
   'progress',
   'keyPress',
 
-  'beforeResize',
-  'afterResize',
-
   'resize',
   'breakpoint',
+  'zoomChange',
   'beforeResize',
+  'afterResize',
 
   'sliderMove',
   'slideChange',
@@ -48,6 +48,14 @@ export const SwiperEvents: SwiperEvent[] = [
   'scrollDragEnd',
   'scrollDragMove',
   'scrollDragStart',
+
+  'navigationHide',
+  'navigationShow',
+
+  'paginationRender',
+  'paginationUpdate',
+  'paginationHide',
+  'paginationShow',
 
   'swiperTap',
   'swiperClick',
@@ -112,6 +120,8 @@ export interface SwiperConfigInterface {
   followFinger?: boolean,
   allowTouchMove?: boolean,
   threshold?: number,
+  touchStartPreventDefault?: boolean,
+  touchStartForcePreventDefault?: boolean,
   touchMoveStopPropagation?: boolean,
   iOSEdgeSwipeDetection?: boolean,
   iOSEdgeSwipeThreshold?: number,
@@ -167,6 +177,7 @@ export interface SwiperConfigInterface {
   // Observer
   observer?: boolean,
   observeParents?: boolean,
+  observeSlideChildren?: boolean,
 
   // Namespace
   containerModifierClass?: string,
@@ -398,6 +409,8 @@ export class SwiperConfig implements SwiperConfigInterface {
   public followFinger?: boolean;
   public allowTouchMove?: boolean;
   public threshold?: number;
+  public touchStartPreventDefault?: boolean;
+  public touchStartForcePreventDefault?: boolean;
   public touchMoveStopPropagation?: boolean;
   public iOSEdgeSwipeDetection?: boolean;
   public iOSEdgeSwipeThreshold?: number;
@@ -453,6 +466,7 @@ export class SwiperConfig implements SwiperConfigInterface {
   // Observer
   public observer?: boolean;
   public observeParents?: boolean;
+  public observeSlideChildren?: boolean;
 
   // Namespace
   public containerModifierClass?: string;
