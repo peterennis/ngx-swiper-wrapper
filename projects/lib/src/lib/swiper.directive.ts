@@ -48,6 +48,9 @@ export class SwiperDirective implements AfterViewInit, OnDestroy, DoCheck, OnCha
   @Output('afterResize'                ) S_AFTERRESIZE                    = new EventEmitter<any>();
   @Output('beforeResize'               ) S_BEFORERESIZE                   = new EventEmitter<any>();
 
+  @Output('loopFix'                    ) S_LOOPFIX                        = new EventEmitter<any>();
+  @Output('beforeLoopFix'              ) S_BEFORELOOPFIX                  = new EventEmitter<any>();
+
   @Output('sliderMove'                 ) S_SLIDERMOVE                     = new EventEmitter<any>();
   @Output('slideChange'                ) S_SLIDECHANGE                    = new EventEmitter<any>();
 
